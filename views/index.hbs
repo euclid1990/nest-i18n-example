@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{ hello }}
+    <ul></ul>
+    <script>
+      fetch(
+        new Request('/api/cats', {
+          method: 'GET',
+        }),
+      )
+        .then(r => r.json())
+        .then(r => {
+          for (const i of r) {
+            document
+              .querySelector('ul')
+              .insertAdjacentHTML('beforeend', `<li>${i}</li>`);
+          }
+        });
+    </script>
+  </body>
+</html>
